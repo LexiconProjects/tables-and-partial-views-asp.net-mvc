@@ -1,0 +1,19 @@
+﻿@model TablesAndViews.Models.PeopleModel
+
+@{
+    ViewData["Title"] = "_peopleTablePartial";
+}
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.Phone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.City)
+    </td>
+
+</tr>
+

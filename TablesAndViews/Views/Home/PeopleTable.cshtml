@@ -1,0 +1,77 @@
+﻿@model TablesAndViews.Models.PeopleModel;
+@{
+    ViewData["Title"] = "PeopleTable";
+}
+
+<h1 class="display-1">Win a PlayStation5!</h1>
+<p>Enter your details and register for a chance to win our constest!</p>
+
+
+<form action="/Home/RegisterPeople" method="post">
+
+
+    <div class="form-gorup">
+        <input name="Name" type="text" placeholder="Enter your name" required />
+    </div>
+
+
+
+    <div class="form-gorup">
+        <input name="Phone" type="tel" placeholder="Enter your phone" required />
+    </div>
+
+
+
+    <div class="form-gorup">
+        <input name="City" type="text" placeholder="Enter your city" required />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+<br />
+<p class="display-4">People that entered the competition:</p>
+
+<div class="row">
+    <div class="col">
+        <form action="/Home/FilterPeople" method="post">
+
+            <input name="filter" type="text" placeholder="Search by city or name" required />
+            <button type="submit" class="btn btn-primary">Search</button>
+
+        </form>
+    </div>
+    <div class="col">
+        <form action="/Home/ResetFilter" method="post">
+            <button type="submit" class="btn btn-secondary" name="filterReset" value="reset">Reset filter</button>
+        </form>
+    </div>
+
+</div>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>City</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i = 0; i < PeopleModel.peopleListResult.Count; i++)
+                {
+                    <tr>
+                        <td>@PeopleModel.peopleListResult[i].Name</td>
+                        <td>@PeopleModel.peopleListResult[i].Phone</td>
+                        <td>@PeopleModel.peopleListResult[i].City</td>
+                        <td>@Html.ActionLink("Remove", "RemovePerson", "Home", new { index = i })</td>
+
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>

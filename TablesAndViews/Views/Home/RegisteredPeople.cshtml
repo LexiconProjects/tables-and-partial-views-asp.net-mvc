@@ -1,0 +1,25 @@
+﻿@model TablesAndViews.Models.PeopleModel
+
+@{
+    ViewData["Title"] = "RegisteredPeople";
+}
+
+<h1 class="display-3">Here is the final list of all the registered people that will compete in the PlayStation 5 contest:</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.City)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach( var item in PeopleModel.peopleListResult)
+        {
+         <partial name="_peopleTablePartial" model="item" />
+        }
+    </tbody>
+
+</table>
